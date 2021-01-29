@@ -48,6 +48,26 @@
                ReferencedContainer = "container:WebRTCDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3E90B81525C3FAA3008E90E0"
+               BuildableName = "AwsSignallingTests.xctest"
+               BlueprintName = "AwsSignallingTests"
+               ReferencedContainer = "container:WebRTCDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3E90B84925C3FB00008E90E0"
+               BuildableName = "AwsSigallingTests.xctest"
+               BlueprintName = "AwsSigallingTests"
+               ReferencedContainer = "container:WebRTCDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

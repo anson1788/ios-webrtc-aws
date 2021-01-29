@@ -6,6 +6,9 @@ import ReplayKit
 import WebRTC
 import WebRTCDemoSignalling
 import os.log
+import AwsSignalling
+
+
 
 class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
     let client: ARDAppClient = ARDAppClient()
@@ -13,6 +16,9 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
     let sharedSettings = UserDefaults(suiteName: .sharedGroupName)
     var capturer: ARDExternalSampleDelegate?
 
+    
+    let awsClient:AwsSignallingClient  = AwsSignallingClient.init(username: "anson1788", pw: "Yu24163914!")
+    
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional.
         self.logging.start { (logMessage: String, _) in
@@ -26,6 +32,9 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
 
         let logMessage = "Try to connect to room \(roomID)"
         OSLog.info(logMessage: logMessage, log: OSLog.broadcastExtension)
+        
+        self.awsClient.setDelegate(delegate: self)
+        self.awsClient.mobileLogin()
     }
     
     override func broadcastPaused() {
@@ -58,6 +67,12 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
             // Handle other sample buffer types
             fatalError("Unknown type of sample buffer")
         }
+    }
+}
+
+extension WebRTCDemoBroadcastSampleHandler :AwsClientDelegate {
+    func logonSuccess(){
+        print("aa")
     }
 }
 

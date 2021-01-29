@@ -1,14 +1,43 @@
-platform :ios, '13.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target "WebRTCDemo" do
-  pod 'GoogleWebRTC'
+  pod 'AWSCognitoIdentityProvider'
+  pod 'AWSMobileClient'
+  pod 'CommonCryptoModule'
+  pod 'AWSKinesisVideo'
+  pod 'AWSKinesisVideoSignaling'
+  pod 'GoogleWebRTC', '~> 1.1'
+  pod 'Starscream', '~> 3.0'
 end
 
 target "WebRTCDemoBroadcast" do
-  pod 'GoogleWebRTC'
+  pod 'AWSCognitoIdentityProvider'
+  pod 'AWSMobileClient'
+  pod 'CommonCryptoModule'
+  pod 'AWSKinesisVideo'
+  pod 'AWSKinesisVideoSignaling'
+  pod 'GoogleWebRTC', '~> 1.1'
+  pod 'Starscream', '~> 3.0'
 end
 
 target "WebRTCDemoSignalling" do
-  pod 'GoogleWebRTC'
+  pod 'AWSCognitoIdentityProvider'
+  pod 'AWSMobileClient'
+  pod 'CommonCryptoModule'
+  pod 'AWSKinesisVideo'
+  pod 'AWSKinesisVideoSignaling'
+  pod 'GoogleWebRTC', '~> 1.1'
+  pod 'Starscream', '~> 3.0'
+end
+
+
+target "AwsSignalling" do
+  pod 'AWSCognitoIdentityProvider'
+  pod 'AWSMobileClient'
+  pod 'CommonCryptoModule'
+  pod 'AWSKinesisVideo'
+  pod 'AWSKinesisVideoSignaling'
+  pod 'GoogleWebRTC', '~> 1.1'
+  pod 'Starscream', '~> 3.0'
 end

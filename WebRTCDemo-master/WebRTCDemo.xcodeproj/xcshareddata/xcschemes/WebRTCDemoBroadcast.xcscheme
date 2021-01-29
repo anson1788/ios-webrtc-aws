@@ -53,6 +53,26 @@
                ReferencedContainer = "container:WebRTCDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3E90B81525C3FAA3008E90E0"
+               BuildableName = "AwsSignallingTests.xctest"
+               BlueprintName = "AwsSignallingTests"
+               ReferencedContainer = "container:WebRTCDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3E90B84925C3FB00008E90E0"
+               BuildableName = "AwsSigallingTests.xctest"
+               BlueprintName = "AwsSigallingTests"
+               ReferencedContainer = "container:WebRTCDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -67,8 +87,12 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "1"
+         BundleIdentifier = "inhouse.replaykitDemo"
+         RemotePath = "/Users/anson/Library/Developer/CoreSimulator/Devices/ED03DBFD-B530-4BBF-BA9C-25715FA076E8/data/Containers/Bundle/Application/9696E3F2-3994-4EB8-8A61-8AA18E9F8A54/WebRTCDemo.app">
+      </RemoteRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F19501672417949000A39C60"
@@ -76,7 +100,7 @@
             BlueprintName = "WebRTCDemo"
             ReferencedContainer = "container:WebRTCDemo.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

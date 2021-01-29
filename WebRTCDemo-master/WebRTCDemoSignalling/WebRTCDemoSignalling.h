@@ -16,3 +16,4 @@ FOUNDATION_EXPORT const unsigned char WebRTCDemoSignallingVersionString[];
 #import <WebRTCDemoSignalling/ARDSettingsModel.h>
 #import <WebRTCDemoSignalling/ARDAppClient.h>
 #import <WebRTCDemoSignalling/ARDExternalSampleCapturer.h>
+#import <WebRTCDemoSignalling/ARDExternalSampleCapturer.h>

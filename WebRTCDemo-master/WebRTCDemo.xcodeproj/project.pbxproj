@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		15C90E91EA8F21243A6B1411 /* Pods_WebRTCDemoBroadcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADE931ED582989C42598E2 /* Pods_WebRTCDemoBroadcast.framework */; };
 		319D5329893C99B60E2822EE /* Pods_WebRTCDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462484970783E48204B2F166 /* Pods_WebRTCDemo.framework */; };
+		3E692DFD25C3FCEC009C20C4 /* AwsSignalling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */; };
+		3E692E0425C3FCEC009C20C4 /* AwsSignallingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E692E0325C3FCEC009C20C4 /* AwsSignallingTests.swift */; };
+		3E692E0625C3FCEC009C20C4 /* AwsSignalling.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E692DF625C3FCEC009C20C4 /* AwsSignalling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E692E0925C3FCEC009C20C4 /* AwsSignalling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */; };
+		3E692E0A25C3FCEC009C20C4 /* AwsSignalling.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3E692E2825C44861009C20C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E692E2725C44861009C20C4 /* Constants.swift */; };
+		3E692E3325C4490C009C20C4 /* AwsSignallingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E90B80425C3F5E9008E90E0 /* AwsSignallingClient.swift */; };
+		3E90B80525C3F5E9008E90E0 /* AwsSignallingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E90B80425C3F5E9008E90E0 /* AwsSignallingClient.swift */; };
+		CCBB6C9FF9D22AFE06618D44 /* Pods_AwsSignalling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33C812AC65682799983F1C9 /* Pods_AwsSignalling.framework */; };
 		E4F2471DAEC0B2DAFC8331B5 /* Pods_WebRTCDemoSignalling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8402EA5B93ABA7BDA0DD89D6 /* Pods_WebRTCDemoSignalling.framework */; };
 		F195016C2417949000A39C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195016B2417949000A39C60 /* AppDelegate.swift */; };
 		F195016E2417949000A39C60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195016D2417949000A39C60 /* SceneDelegate.swift */; };
@@ -73,6 +82,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3E692DFE25C3FCEC009C20C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F19501602417949000A39C60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E692DF325C3FCEC009C20C4;
+			remoteInfo = AwsSignalling;
+		};
+		3E692E0025C3FCEC009C20C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F19501602417949000A39C60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F19501672417949000A39C60;
+			remoteInfo = WebRTCDemo;
+		};
+		3E692E0725C3FCEC009C20C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F19501602417949000A39C60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E692DF325C3FCEC009C20C4;
+			remoteInfo = AwsSignalling;
+		};
 		F195017F2417949200A39C60 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F19501602417949000A39C60 /* Project object */;
@@ -135,6 +165,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3E692E0A25C3FCEC009C20C4 /* AwsSignalling.framework in Embed Frameworks */,
 				F19501BB241795F700A39C60 /* WebRTCDemoSignalling.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -154,6 +185,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		218CED7D4E24ABA7D80F450C /* Pods-AwsSignalling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwsSignalling.release.xcconfig"; path = "Target Support Files/Pods-AwsSignalling/Pods-AwsSignalling.release.xcconfig"; sourceTree = "<group>"; };
+		3336FBE4C02B4CFD679C92F5 /* Pods-AwsSignalling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwsSignalling.debug.xcconfig"; path = "Target Support Files/Pods-AwsSignalling/Pods-AwsSignalling.debug.xcconfig"; sourceTree = "<group>"; };
+		3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AwsSignalling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E692DF625C3FCEC009C20C4 /* AwsSignalling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AwsSignalling.h; sourceTree = "<group>"; };
+		3E692DF725C3FCEC009C20C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E692DFC25C3FCEC009C20C4 /* AwsSignallingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwsSignallingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E692E0325C3FCEC009C20C4 /* AwsSignallingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsSignallingTests.swift; sourceTree = "<group>"; };
+		3E692E0525C3FCEC009C20C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E692E2725C44861009C20C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3E90B80425C3F5E9008E90E0 /* AwsSignallingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsSignallingClient.swift; sourceTree = "<group>"; };
 		462484970783E48204B2F166 /* Pods_WebRTCDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebRTCDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CBE9E510FCF7D4CED6CFDAD /* Pods-WebRTCDemoSignalling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTCDemoSignalling.debug.xcconfig"; path = "Target Support Files/Pods-WebRTCDemoSignalling/Pods-WebRTCDemoSignalling.debug.xcconfig"; sourceTree = "<group>"; };
 		7674CFE299F6D3AAEDB6AF49 /* Pods-WebRTCDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTCDemo.release.xcconfig"; path = "Target Support Files/Pods-WebRTCDemo/Pods-WebRTCDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +203,7 @@
 		87D2CDE381884B12D931BD30 /* Pods-WebRTCDemoBroadcast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTCDemoBroadcast.debug.xcconfig"; path = "Target Support Files/Pods-WebRTCDemoBroadcast/Pods-WebRTCDemoBroadcast.debug.xcconfig"; sourceTree = "<group>"; };
 		ACADE931ED582989C42598E2 /* Pods_WebRTCDemoBroadcast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebRTCDemoBroadcast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF9FF5ECCFD792E0E58A6258 /* Pods-WebRTCDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTCDemo.debug.xcconfig"; path = "Target Support Files/Pods-WebRTCDemo/Pods-WebRTCDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E33C812AC65682799983F1C9 /* Pods_AwsSignalling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AwsSignalling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19501682417949000A39C60 /* WebRTCDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebRTCDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F195016B2417949000A39C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F195016D2417949000A39C60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -230,12 +272,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3E692DF125C3FCEC009C20C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCBB6C9FF9D22AFE06618D44 /* Pods_AwsSignalling.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E692DF925C3FCEC009C20C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E692DFD25C3FCEC009C20C4 /* AwsSignalling.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F19501652417949000A39C60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F19501BA241795F700A39C60 /* WebRTCDemoSignalling.framework in Frameworks */,
 				319D5329893C99B60E2822EE /* Pods_WebRTCDemo.framework in Frameworks */,
+				3E692E0925C3FCEC009C20C4 /* AwsSignalling.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,8 +343,46 @@
 				76D3304D04476E5EEDD6913D /* Pods-WebRTCDemoBroadcast.release.xcconfig */,
 				5CBE9E510FCF7D4CED6CFDAD /* Pods-WebRTCDemoSignalling.debug.xcconfig */,
 				FBE24F9A4A3F9B1BCC2B9365 /* Pods-WebRTCDemoSignalling.release.xcconfig */,
+				3336FBE4C02B4CFD679C92F5 /* Pods-AwsSignalling.debug.xcconfig */,
+				218CED7D4E24ABA7D80F450C /* Pods-AwsSignalling.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3E692DF525C3FCEC009C20C4 /* AwsSignalling */ = {
+			isa = PBXGroup;
+			children = (
+				3E692E1625C3FF0E009C20C4 /* Class */,
+				3E692DF625C3FCEC009C20C4 /* AwsSignalling.h */,
+				3E692DF725C3FCEC009C20C4 /* Info.plist */,
+			);
+			path = AwsSignalling;
+			sourceTree = "<group>";
+		};
+		3E692E0225C3FCEC009C20C4 /* AwsSignallingTests */ = {
+			isa = PBXGroup;
+			children = (
+				3E692E0325C3FCEC009C20C4 /* AwsSignallingTests.swift */,
+				3E692E0525C3FCEC009C20C4 /* Info.plist */,
+			);
+			path = AwsSignallingTests;
+			sourceTree = "<group>";
+		};
+		3E692E1625C3FF0E009C20C4 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				3E692E2625C44855009C20C4 /* Config */,
+				3E90B80425C3F5E9008E90E0 /* AwsSignallingClient.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		3E692E2625C44855009C20C4 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				3E692E2725C44861009C20C4 /* Constants.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		F195015F2417949000A39C60 = {
@@ -297,6 +394,8 @@
 				F19501952417952600A39C60 /* WebRTCDemoBroadcast */,
 				F19501A6241795F700A39C60 /* WebRTCDemoSignalling */,
 				F19501B3241795F700A39C60 /* WebRTCDemoSignallingTests */,
+				3E692DF525C3FCEC009C20C4 /* AwsSignalling */,
+				3E692E0225C3FCEC009C20C4 /* AwsSignallingTests */,
 				F19501922417952600A39C60 /* Frameworks */,
 				F19501692417949000A39C60 /* Products */,
 				023FD2D74785E5A4910392C4 /* Pods */,
@@ -311,6 +410,8 @@
 				F19501912417952600A39C60 /* WebRTCDemoBroadcast.appex */,
 				F19501A5241795F700A39C60 /* WebRTCDemoSignalling.framework */,
 				F19501AD241795F700A39C60 /* WebRTCDemoSignallingTests.xctest */,
+				3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */,
+				3E692DFC25C3FCEC009C20C4 /* AwsSignallingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,6 +456,7 @@
 				462484970783E48204B2F166 /* Pods_WebRTCDemo.framework */,
 				ACADE931ED582989C42598E2 /* Pods_WebRTCDemoBroadcast.framework */,
 				8402EA5B93ABA7BDA0DD89D6 /* Pods_WebRTCDemoSignalling.framework */,
+				E33C812AC65682799983F1C9 /* Pods_AwsSignalling.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -469,6 +571,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3E692DEF25C3FCEC009C20C4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E692E0625C3FCEC009C20C4 /* AwsSignalling.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F19501A0241795F700A39C60 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -502,6 +612,44 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3E692DF325C3FCEC009C20C4 /* AwsSignalling */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E692E0F25C3FCEC009C20C4 /* Build configuration list for PBXNativeTarget "AwsSignalling" */;
+			buildPhases = (
+				856161654EBBD46B70CC2B75 /* [CP] Check Pods Manifest.lock */,
+				3E692DEF25C3FCEC009C20C4 /* Headers */,
+				3E692DF025C3FCEC009C20C4 /* Sources */,
+				3E692DF125C3FCEC009C20C4 /* Frameworks */,
+				3E692DF225C3FCEC009C20C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AwsSignalling;
+			productName = AwsSignalling;
+			productReference = 3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3E692DFB25C3FCEC009C20C4 /* AwsSignallingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E692E1025C3FCEC009C20C4 /* Build configuration list for PBXNativeTarget "AwsSignallingTests" */;
+			buildPhases = (
+				3E692DF825C3FCEC009C20C4 /* Sources */,
+				3E692DF925C3FCEC009C20C4 /* Frameworks */,
+				3E692DFA25C3FCEC009C20C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3E692DFF25C3FCEC009C20C4 /* PBXTargetDependency */,
+				3E692E0125C3FCEC009C20C4 /* PBXTargetDependency */,
+			);
+			name = AwsSignallingTests;
+			productName = AwsSignallingTests;
+			productReference = 3E692DFC25C3FCEC009C20C4 /* AwsSignallingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F19501672417949000A39C60 /* WebRTCDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F19501872417949200A39C60 /* Build configuration list for PBXNativeTarget "WebRTCDemo" */;
@@ -519,6 +667,7 @@
 			dependencies = (
 				F195019A2417952600A39C60 /* PBXTargetDependency */,
 				F19501B9241795F700A39C60 /* PBXTargetDependency */,
+				3E692E0825C3FCEC009C20C4 /* PBXTargetDependency */,
 			);
 			name = WebRTCDemo;
 			productName = WebRTCDemo;
@@ -607,10 +756,18 @@
 		F19501602417949000A39C60 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = demo;
 				TargetAttributes = {
+					3E692DF325C3FCEC009C20C4 = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+					};
+					3E692DFB25C3FCEC009C20C4 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = F19501672417949000A39C60;
+					};
 					F19501672417949000A39C60 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -623,7 +780,7 @@
 					};
 					F19501A4241795F700A39C60 = {
 						CreatedOnToolsVersion = 11.3.1;
-						LastSwiftMigration = 1130;
+						LastSwiftMigration = 1240;
 					};
 					F19501AC241795F700A39C60 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -649,11 +806,27 @@
 				F19501902417952600A39C60 /* WebRTCDemoBroadcast */,
 				F19501A4241795F700A39C60 /* WebRTCDemoSignalling */,
 				F19501AC241795F700A39C60 /* WebRTCDemoSignallingTests */,
+				3E692DF325C3FCEC009C20C4 /* AwsSignalling */,
+				3E692DFB25C3FCEC009C20C4 /* AwsSignallingTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3E692DF225C3FCEC009C20C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E692DFA25C3FCEC009C20C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F19501662417949000A39C60 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -779,9 +952,48 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		856161654EBBD46B70CC2B75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AwsSignalling-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3E692DF025C3FCEC009C20C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E692E2825C44861009C20C4 /* Constants.swift in Sources */,
+				3E692E3325C4490C009C20C4 /* AwsSignallingClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E692DF825C3FCEC009C20C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E692E0425C3FCEC009C20C4 /* AwsSignallingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F19501642417949000A39C60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -821,6 +1033,7 @@
 				F19501FA2418253400A39C60 /* ARDUtilities.m in Sources */,
 				F19502072418253400A39C60 /* RTCSessionDescription+JSON.m in Sources */,
 				F19501F42418253400A39C60 /* ARDAppEngineClient.m in Sources */,
+				3E90B80525C3F5E9008E90E0 /* AwsSignallingClient.swift in Sources */,
 				F1950216241828A800A39C60 /* ARDMessageResponse.m in Sources */,
 				F19502042418253400A39C60 /* ARDSettingsModel.m in Sources */,
 				F195020B2418253400A39C60 /* ARDAppClient.m in Sources */,
@@ -846,6 +1059,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3E692DFF25C3FCEC009C20C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E692DF325C3FCEC009C20C4 /* AwsSignalling */;
+			targetProxy = 3E692DFE25C3FCEC009C20C4 /* PBXContainerItemProxy */;
+		};
+		3E692E0125C3FCEC009C20C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F19501672417949000A39C60 /* WebRTCDemo */;
+			targetProxy = 3E692E0025C3FCEC009C20C4 /* PBXContainerItemProxy */;
+		};
+		3E692E0825C3FCEC009C20C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E692DF325C3FCEC009C20C4 /* AwsSignalling */;
+			targetProxy = 3E692E0725C3FCEC009C20C4 /* PBXContainerItemProxy */;
+		};
 		F19501802417949200A39C60 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F19501672417949000A39C60 /* WebRTCDemo */;
@@ -890,6 +1118,115 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3E692E0B25C3FCEC009C20C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3336FBE4C02B4CFD679C92F5 /* Pods-AwsSignalling.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 879634G2RK;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AwsSignalling/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = homedemo.AwsSignalling;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3E692E0C25C3FCEC009C20C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 218CED7D4E24ABA7D80F450C /* Pods-AwsSignalling.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 879634G2RK;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AwsSignalling/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = homedemo.AwsSignalling;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3E692E0D25C3FCEC009C20C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 879634G2RK;
+				INFOPLIST_FILE = AwsSignallingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = homedemo.AwsSignallingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebRTCDemo.app/WebRTCDemo";
+			};
+			name = Debug;
+		};
+		3E692E0E25C3FCEC009C20C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 879634G2RK;
+				INFOPLIST_FILE = AwsSignallingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = homedemo.AwsSignallingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebRTCDemo.app/WebRTCDemo";
+			};
+			name = Release;
+		};
 		F19501852417949200A39C60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1222,6 +1559,7 @@
 		F19501C1241795F700A39C60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WebRTCDemoSignallingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1240,6 +1578,7 @@
 		F19501C2241795F700A39C60 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WebRTCDemoSignallingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1258,6 +1597,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3E692E0F25C3FCEC009C20C4 /* Build configuration list for PBXNativeTarget "AwsSignalling" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E692E0B25C3FCEC009C20C4 /* Debug */,
+				3E692E0C25C3FCEC009C20C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E692E1025C3FCEC009C20C4 /* Build configuration list for PBXNativeTarget "AwsSignallingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E692E0D25C3FCEC009C20C4 /* Debug */,
+				3E692E0E25C3FCEC009C20C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F19501632417949000A39C60 /* Build configuration list for PBXProject "WebRTCDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

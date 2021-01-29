@@ -17,6 +17,7 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
     var lastRoomID: String?
     let sharedSettings = UserDefaults(suiteName: .sharedGroupName)
 
+    let awsClient:AwsSignallingClient  = AwsSignallingClient.init(username: "anson1788", pw: "Yu24163914!")
     override init() {
         super.init()
 
@@ -24,7 +25,10 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
         self.logging.start { (logMessage: String, _) in
             OSLog.info(logMessage: logMessage, log: OSLog.webRTC)
         }
+        awsClient.mobileLogin()
+        
     }
+    
 
     public func saveRoomIDForAppExtension(roomID: String) {
         sharedSettings?.set(roomID, forKey: .broadcastRoomIDKey)
