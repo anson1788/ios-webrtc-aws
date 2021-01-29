@@ -7,6 +7,7 @@ import WebRTC
 import WebRTCDemoSignalling
 import ReplayKit
 import os.log
+import AwsSignalling
 
 class WebRTCBroadcastModelView: NSObject, ObservableObject {
     let client: ARDAppClient = ARDAppClient()

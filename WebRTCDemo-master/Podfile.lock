@@ -25,6 +25,7 @@ DEPENDENCIES:
   - AWSKinesisVideoSignaling
   - AWSMobileClient
   - CommonCryptoModule
+  - GoogleWebRTC
   - GoogleWebRTC (~> 1.1)
   - Starscream (~> 3.0)
 
@@ -53,6 +54,6 @@ SPEC CHECKSUMS:
   GoogleWebRTC: b39a78c4f5cc6b0323415b9233db03a2faa7b0f0
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: ada1db3d93c07dfa13c4c67d1b1cba694e90cd2e
+PODFILE CHECKSUM: 98ab25512518838be111d984e79b0ac2fbc8d9b5
 
 COCOAPODS: 1.10.0

@@ -30,36 +30,44 @@ public class AwsSignallingClient {
     
     public func initAwsConfig(sucessCallBack:(()->(Void))?,errorCallBack:( ()->(Void))?){
         AWSDDLog.sharedInstance.logLevel = .verbose
-        
+        let serviceConfiguration = AWSServiceConfiguration(region: cognitoIdentityUserPoolRegion, credentialsProvider: nil)
+        // create pool configuration
+        let poolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: cognitoIdentityUserPoolAppClientId,
+                                                                        clientSecret: cognitoIdentityUserPoolAppClientSecret,
+                                                                        poolId: cognitoIdentityUserPoolId)
+        AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: poolConfiguration, forKey: awsCognitoUserPoolsSignInProviderKey)
+
         AWSMobileClient.default().initialize { (userState, error) in
             if let error = error {
                 print("error: \(error.localizedDescription)")
                 errorCallBack?()
                 return
             }
+            guard let userState = userState else {
+                errorCallBack?()
+                return
+            }
+            print("The user is \(userState.rawValue).")
             sucessCallBack?()
         }
     }
     public func mobileLogin(){
         initAwsConfig(sucessCallBack: {() in
+           // print("The user is \(self.username).")
+           // print("The pw is \(self.pw).")
+                    
+                AWSMobileClient.default().signIn(username: self.username, password: self.pw) { (signInResult, error) in
+
+                    DispatchQueue.main.async {
+                        print("log sucess")
+                    }
+                    
+                }
             
-        }, errorCallBack: {() in 
+        }, errorCallBack: {() in
             
         })
         
-        /*
-        AWSMobileClient.default().initialize { (userState, error) in
-            if let error = error {
-                print("error: \(error.localizedDescription)")
-                return
-            }
-            
-            AWSMobileClient.default().signIn(username: self.username, password: self.pw) { (signInResult, error) in
-
-                DispatchQueue.main.async {}
-                
-            }
-        }*/
     }
 }
 
