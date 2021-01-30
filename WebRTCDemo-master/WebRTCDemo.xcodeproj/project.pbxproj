@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		15C90E91EA8F21243A6B1411 /* Pods_WebRTCDemoBroadcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADE931ED582989C42598E2 /* Pods_WebRTCDemoBroadcast.framework */; };
 		319D5329893C99B60E2822EE /* Pods_WebRTCDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462484970783E48204B2F166 /* Pods_WebRTCDemo.framework */; };
+		3E3AD27D25C53D3300814EBA /* KVSSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AD27C25C53D3300814EBA /* KVSSigner.swift */; };
+		3E3AD28325C55C5E00814EBA /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AD28225C55C5E00814EBA /* WebRTCClient.swift */; };
+		3E3AD28925C56F0400814EBA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3AD28825C56F0400814EBA /* AVFoundation.framework */; };
+		3E3AD29B25C5770E00814EBA /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AD29A25C5770E00814EBA /* SignalingClient.swift */; };
+		3E3AD2A125C577A100814EBA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AD2A025C577A100814EBA /* Message.swift */; };
+		3E3AD2A725C577BA00814EBA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AD2A625C577BA00814EBA /* Event.swift */; };
 		3E692E0625C3FCEC009C20C4 /* AwsSignalling.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E692DF625C3FCEC009C20C4 /* AwsSignalling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E692E0925C3FCEC009C20C4 /* AwsSignalling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */; };
 		3E692E0A25C3FCEC009C20C4 /* AwsSignalling.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -174,6 +180,12 @@
 /* Begin PBXFileReference section */
 		218CED7D4E24ABA7D80F450C /* Pods-AwsSignalling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwsSignalling.release.xcconfig"; path = "Target Support Files/Pods-AwsSignalling/Pods-AwsSignalling.release.xcconfig"; sourceTree = "<group>"; };
 		3336FBE4C02B4CFD679C92F5 /* Pods-AwsSignalling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwsSignalling.debug.xcconfig"; path = "Target Support Files/Pods-AwsSignalling/Pods-AwsSignalling.debug.xcconfig"; sourceTree = "<group>"; };
+		3E3AD27C25C53D3300814EBA /* KVSSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVSSigner.swift; sourceTree = "<group>"; };
+		3E3AD28225C55C5E00814EBA /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
+		3E3AD28825C56F0400814EBA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		3E3AD29A25C5770E00814EBA /* SignalingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
+		3E3AD2A025C577A100814EBA /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		3E3AD2A625C577BA00814EBA /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3E692DF425C3FCEC009C20C4 /* AwsSignalling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AwsSignalling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E692DF625C3FCEC009C20C4 /* AwsSignalling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AwsSignalling.h; sourceTree = "<group>"; };
 		3E692DF725C3FCEC009C20C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -262,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E3AD28925C56F0400814EBA /* AVFoundation.framework in Frameworks */,
 				CCBB6C9FF9D22AFE06618D44 /* Pods_AwsSignalling.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,8 +354,13 @@
 		3E692E1625C3FF0E009C20C4 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				3E3AD2A625C577BA00814EBA /* Event.swift */,
+				3E3AD2A025C577A100814EBA /* Message.swift */,
+				3E3AD29A25C5770E00814EBA /* SignalingClient.swift */,
+				3E3AD28225C55C5E00814EBA /* WebRTCClient.swift */,
 				3E692E2625C44855009C20C4 /* Config */,
 				3E90B80425C3F5E9008E90E0 /* AwsSignallingClient.swift */,
+				3E3AD27C25C53D3300814EBA /* KVSSigner.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -421,6 +439,7 @@
 		F19501922417952600A39C60 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E3AD28825C56F0400814EBA /* AVFoundation.framework */,
 				F19501932417952600A39C60 /* ReplayKit.framework */,
 				462484970783E48204B2F166 /* Pods_WebRTCDemo.framework */,
 				ACADE931ED582989C42598E2 /* Pods_WebRTCDemoBroadcast.framework */,
@@ -923,8 +942,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E3AD29B25C5770E00814EBA /* SignalingClient.swift in Sources */,
 				3E692E2825C44861009C20C4 /* Constants.swift in Sources */,
 				3E692E3325C4490C009C20C4 /* AwsSignallingClient.swift in Sources */,
+				3E3AD2A125C577A100814EBA /* Message.swift in Sources */,
+				3E3AD27D25C53D3300814EBA /* KVSSigner.swift in Sources */,
+				3E3AD2A725C577BA00814EBA /* Event.swift in Sources */,
+				3E3AD28325C55C5E00814EBA /* WebRTCClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,7 +1092,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1101,7 +1125,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = homedemo.AwsSignalling;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
