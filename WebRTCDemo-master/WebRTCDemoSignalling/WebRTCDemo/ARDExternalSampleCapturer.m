@@ -13,7 +13,7 @@
 #import "ARDUtilities.h"
 #import <WebRTC/WebRTC.h>
 
-const CGFloat kMaximumSupportedResolution = 320;
+const CGFloat kMaximumSupportedResolution = 160;
 
 @implementation ARDExternalSampleCapturer
 
