@@ -36,30 +36,61 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
     }
 
     public func startBroadcast(to roomID: String?) {
+     //  startScreenCapturing()
+    
         let settings = ARDSettingsModel()
         client.isBroadcast = true
         let roomID = roomID ?? String.broadcastRandomRoomID
         self.lastRoomID = roomID
+        client.createCapturer(settings)
+        /*
         client.connectToRoom(withId: roomID, settings: settings, isLoopback: false)
 
         let logMessage = "Try to connect to room \(roomID)"
         self.status = logMessage
         OSLog.info(logMessage: logMessage, log: OSLog.app)
+         */
+   
+    }
+    
+    class Timestamp {
+        lazy var dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS "
+            return formatter
+        }()
+
+        func printTimestamp() {
+            print(dateFormatter.string(from: Date()))
+        }
     }
 
+  
+
     private func startScreenCapturing() {
+        self.awsClient.didCaptureVideoFrameFront()
+        
+        /*
         RPScreenRecorder.shared().startCapture(handler: { (sample, bufferType, error) in
-            self.recordingErrorHandler(error)
+            //self.recordingErrorHandler(error)
             if (bufferType == .video) {
-                self.capturer?.didCapture(sample)
+                let videoFrame:RTCVideoFrame?  = self.capturer?.didCapture(toVideoFrame: sample)
+               // print("video  \(videoFrame)")
+                
+                self.awsClient.didCaptureVideoFrame(videoFrame: videoFrame!)
+              //  self.capturer?.didCapture(sample)
+                let timestamp = Timestamp()
+                timestamp.printTimestamp()
+                print("able to get video")
             }
             
         }, completionHandler: { error in
             if error == nil {
                 self.status = "Broadcast started in room with id: \(self.lastRoomID ?? "")"
             }
-            self.recordingErrorHandler(error)
-        })
+           //self.recordingErrorHandler(error)
+        })*/
+        
     }
 
     private func recordingErrorHandler(_ error: Error?) {
@@ -89,6 +120,8 @@ extension WebRTCBroadcastModelView: ARDAppClientDelegate {
 
     func appClient(_ client: ARDAppClient!, didCreateLocalExternalSampleCapturer externalSampleCapturer: ARDExternalSampleCapturer!) {
         self.capturer = externalSampleCapturer
+        
+
         self.startScreenCapturing()
     }
 

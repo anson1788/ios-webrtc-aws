@@ -77,6 +77,8 @@ extension WebRTCDemoBroadcastSampleHandler :AwsClientDelegate {
 }
 
 extension WebRTCDemoBroadcastSampleHandler: ARDAppClientDelegate {
+
+    
     func appClient(_ client: ARDAppClient!, didChange state: ARDAppClientState) {
     }
 

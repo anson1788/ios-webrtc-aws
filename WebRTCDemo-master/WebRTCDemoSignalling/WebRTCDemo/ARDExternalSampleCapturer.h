@@ -12,6 +12,7 @@
 
 @protocol ARDExternalSampleDelegate <NSObject>
 - (void)didCaptureSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+- (RTCVideoFrame*)didCaptureToVideoFrame:(CMSampleBufferRef)sampleBuffer;
 @end
 
 @interface ARDExternalSampleCapturer : RTCVideoCapturer <ARDExternalSampleDelegate>

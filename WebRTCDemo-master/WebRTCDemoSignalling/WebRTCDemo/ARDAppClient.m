@@ -37,7 +37,6 @@ static NSString * const kARDMediaStreamId = @"ARDAMS";
 static NSString * const kARDAudioTrackId = @"ARDAMSa0";
 static NSString * const kARDVideoTrackId = @"ARDAMSv0";
 static NSString * const kARDVideoTrackKind = @"video";
-
 // TODO(tkchin): Add these as UI options.
 #if defined(WEBRTC_IOS)
 static BOOL const kARDAppClientEnableTracing = YES;
@@ -199,6 +198,27 @@ static int const kKbpsMultiplier = 1000;
   [_delegate appClient:self didChangeState:_state];
 }
 
+- (void)createCapturer:(ARDSettingsModel *)settings{
+    RTCDefaultVideoDecoderFactory *decoderFactory = [[RTCDefaultVideoDecoderFactory alloc] init];
+    RTCDefaultVideoEncoderFactory *encoderFactory = [[RTCDefaultVideoEncoderFactory alloc] init];
+    encoderFactory.preferredCodec = [settings currentVideoCodecSettingFromStore];
+    _settings = settings;
+    _factory = [[RTCPeerConnectionFactory alloc] initWithEncoderFactory:encoderFactory
+                                                         decoderFactory:decoderFactory];
+    RTCVideoSource *source = [_factory videoSource];
+    //#if !TARGET_IPHONE_SIMULATOR
+      if (self.isBroadcast) {
+        ARDExternalSampleCapturer *capturer =
+            [[ARDExternalSampleCapturer alloc] initWithDelegate:source];
+        [_delegate appClient:self didCreateLocalExternalSampleCapturer:capturer];
+      }
+    #if !BRODCAST_EXTENSION
+      else {
+        RTCCameraVideoCapturer *capturer = [[RTCCameraVideoCapturer alloc] initWithDelegate:source];
+        [_delegate appClient:self didCreateLocalCapturer:capturer];
+      }
+    #endif
+}
 - (void)connectToRoomWithId:(NSString *)roomId
                    settings:(ARDSettingsModel *)settings
                  isLoopback:(BOOL)isLoopback {

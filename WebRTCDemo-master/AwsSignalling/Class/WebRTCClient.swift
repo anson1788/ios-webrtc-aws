@@ -122,6 +122,30 @@ final class WebRTCClient: NSObject {
         peerConnection.add(remoteCandidate)
     }
 
+    func didCaptureVideoFrameFront(){
+        guard let capturer = self.videoCapturer as? RTCCameraVideoCapturer else {
+            return
+        }
+
+        guard
+            let frontCamera = (RTCCameraVideoCapturer.captureDevices().first { $0.position == .front }),
+
+            let format = RTCCameraVideoCapturer.supportedFormats(for: frontCamera).last,
+
+            let fps = format.videoSupportedFrameRateRanges.first?.maxFrameRate else {
+                debugPrint("Error setting fps.")
+                return
+            }
+
+        capturer.startCapture(with: frontCamera,
+                              format: format,
+                              fps: Int(fps.magnitude))
+    }
+    
+    func didCaptureVideoFrame(videoFrame:RTCVideoFrame){
+        print("data \(self.videoCapturer?.delegate)")
+        self.videoCapturer?.delegate!.capturer(self.videoCapturer!, didCapture: videoFrame)
+    }
     func startCaptureLocalVideo(renderer: RTCVideoRenderer) {
         guard let capturer = self.videoCapturer as? RTCCameraVideoCapturer else {
             return

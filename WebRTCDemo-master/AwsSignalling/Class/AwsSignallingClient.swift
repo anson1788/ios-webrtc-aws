@@ -46,6 +46,13 @@ public class AwsSignallingClient {
         self.delegate?.logonSuccess()
     }
     
+    public func didCaptureVideoFrameFront(){
+        self.webRTCClient?.didCaptureVideoFrameFront()
+    }
+    
+    public func didCaptureVideoFrame(videoFrame:RTCVideoFrame){
+        self.webRTCClient?.didCaptureVideoFrame(videoFrame: videoFrame)
+    }
     public func initAwsConfig(sucessCallBack:((UserState)->(Void))?,errorCallBack:( ()->(Void))?){
         AWSDDLog.sharedInstance.logLevel = .verbose
         let serviceConfiguration = AWSServiceConfiguration(region: cognitoIdentityUserPoolRegion, credentialsProvider: nil)
@@ -124,6 +131,7 @@ public class AwsSignallingClient {
         getSignedWSSUrl(channelARN: self.channelARN!, role: role, connectAs: connectAsUser, region: awsRegionValue)
         print("WSS URL :", wssURL?.absoluteString as Any)
         var RTCIceServersList = [RTCIceServer]()
+        
         for iceServers in self.iceServerList! {
             RTCIceServersList.append(RTCIceServer.init(urlStrings: iceServers.uris!, username: iceServers.username, credential: iceServers.password))
         }
@@ -136,6 +144,14 @@ public class AwsSignallingClient {
         signalingClient!.delegate = self
         signalingClient!.connect()
 
+        let seconds = 2.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            if self.signalingConnected {
+                print("connect")
+            }else{
+                print("not connect")
+            }
+        }
     }
     
     func retrieveChannelARN(channelName: String) {
@@ -218,6 +234,7 @@ public class AwsSignallingClient {
                 AWSServiceConfiguration(region: self.awsRegionType,
                                         endpoint: endpoint,
                                         credentialsProvider: AWSMobileClient.default())
+            AWSKinesisVideoSignaling.register(with: configuration!, forKey: awsKinesisVideoKey)
             let kvsSignalingClient = AWSKinesisVideoSignaling(forKey: awsKinesisVideoKey)
 
             let iceServerConfigRequest = AWSKinesisVideoSignalingGetIceServerConfigRequest.init()
@@ -238,10 +255,6 @@ public class AwsSignallingClient {
         
     }
     func getSingleMasterChannelEndpointRole() -> AWSKinesisVideoChannelRole {
-        /*
-        if isMaster! {
-            return .master
-        }*/
         return .viewer
     }
     
@@ -275,6 +288,9 @@ extension AwsSignallingClient: SignalClientDelegate {
         setRemoteSenderClientId()
         webRTCClient!.set(remoteSdp: sdp) { _ in
             print("Setting remote sdp and sending answer.")
+            self.webRTCClient!.answer{ localSdp in
+                self.signalingClient?.sendAnswer(rtcSdp: localSdp, recipientClientId: self.remoteSenderClientId!)
+            }
          //  self.vc!.sendAnswer(recipientClientID: self.remoteSenderClientId!)
 
         }
@@ -292,12 +308,11 @@ extension AwsSignallingClient: SignalClientDelegate {
 extension AwsSignallingClient: WebRTCClientDelegate {
     func webRTCClient(_: WebRTCClient, didGenerate candidate: RTCIceCandidate) {
         print("Generated local candidate")
-        /*
         setRemoteSenderClientId()
-        signalingClient?.sendIceCandidate(rtcIceCandidate: candidate, master: isMaster!,
+        signalingClient?.sendIceCandidate(rtcIceCandidate: candidate, master: false,
                                           recipientClientId: remoteSenderClientId!,
                                           senderClientId: self.localSenderId)
-         */
+         
     }
 
     func webRTCClient(_: WebRTCClient, didChangeConnectionState state: RTCIceConnectionState) {

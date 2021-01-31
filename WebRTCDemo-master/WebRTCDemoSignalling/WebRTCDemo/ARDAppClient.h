@@ -48,6 +48,7 @@ typedef NS_ENUM(NSInteger, ARDAppClientState) {
 
 - (void)appClient:(ARDAppClient *)client didGetStats:(NSArray *)stats;
 
+
 @optional
 - (void)appClient:(ARDAppClient *)client
     didCreateLocalFileCapturer:(RTCFileVideoCapturer *)fileCapturer;
@@ -79,6 +80,7 @@ typedef NS_ENUM(NSInteger, ARDAppClientState) {
                    settings:(ARDSettingsModel *)settings
                  isLoopback:(BOOL)isLoopback;
 
+- (void)createCapturer:(ARDSettingsModel *)settingseCapturer;
 // Disconnects from the AppRTC servers and any connected clients.
 - (void)disconnect;
 
