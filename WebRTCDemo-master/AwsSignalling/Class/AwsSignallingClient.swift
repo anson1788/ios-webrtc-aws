@@ -146,8 +146,12 @@ public class AwsSignallingClient {
 
         let seconds = 2.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.webRTCClient?.offer { sdp in
+                self.signalingClient?.sendOffer(rtcSdp: sdp, senderClientid: self.localSenderId)
+            }
             if self.signalingConnected {
                 print("connect")
+                self.delegate?.logonSuccess()
             }else{
                 print("not connect")
             }

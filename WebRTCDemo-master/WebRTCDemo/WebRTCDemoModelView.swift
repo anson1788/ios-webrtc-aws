@@ -36,8 +36,7 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
     }
 
     public func startBroadcast(to roomID: String?) {
-     //  startScreenCapturing()
-    
+
         let settings = ARDSettingsModel()
         client.isBroadcast = true
         let roomID = roomID ?? String.broadcastRandomRoomID
@@ -68,15 +67,13 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
   
 
     private func startScreenCapturing() {
-        self.awsClient.didCaptureVideoFrameFront()
+        //self.awsClient.didCaptureVideoFrameFront()
         
-        /*
+    
         RPScreenRecorder.shared().startCapture(handler: { (sample, bufferType, error) in
             //self.recordingErrorHandler(error)
             if (bufferType == .video) {
                 let videoFrame:RTCVideoFrame?  = self.capturer?.didCapture(toVideoFrame: sample)
-               // print("video  \(videoFrame)")
-                
                 self.awsClient.didCaptureVideoFrame(videoFrame: videoFrame!)
               //  self.capturer?.didCapture(sample)
                 let timestamp = Timestamp()
@@ -89,7 +86,7 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
                 self.status = "Broadcast started in room with id: \(self.lastRoomID ?? "")"
             }
            //self.recordingErrorHandler(error)
-        })*/
+        })
         
     }
 

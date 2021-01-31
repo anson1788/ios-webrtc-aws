@@ -17,6 +17,7 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
     var capturer: ARDExternalSampleDelegate?
 
     
+    var logonSuccessBool:Bool = false
     let awsClient:AwsSignallingClient  = AwsSignallingClient.init(username: "anson1788", pw: "Yu24163914!")
     
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
@@ -24,14 +25,13 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
         self.logging.start { (logMessage: String, _) in
             OSLog.info(logMessage: logMessage, log: OSLog.webRTC)
         }
-        let roomID = sharedSettings?.string(forKey: .broadcastRoomIDKey) ?? String.broadcastRandomRoomID
-        let settings = ARDSettingsModel()
+       
         client.isBroadcast = true
         client.delegate = self
-        client.connectToRoom(withId: roomID, settings: settings, isLoopback: false)
+        //client.connectToRoom(withId: roomID, settings: settings, isLoopback: false)
 
-        let logMessage = "Try to connect to room \(roomID)"
-        OSLog.info(logMessage: logMessage, log: OSLog.broadcastExtension)
+        //let logMessage = "Try to connect to room \(roomID)"
+        //OSLog.info(logMessage: logMessage, log: OSLog.broadcastExtension)
         
         self.awsClient.setDelegate(delegate: self)
         self.awsClient.mobileLogin()
@@ -55,7 +55,12 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
         switch sampleBufferType {
         case RPSampleBufferType.video:
             // Handle video sample buffer
-            capturer?.didCapture(sampleBuffer)
+            //capturer?.didCapture(sampleBuffer)
+            if logonSuccessBool {
+                let videoFrame:RTCVideoFrame?  = self.capturer?.didCapture(toVideoFrame: sampleBuffer)
+                self.awsClient.didCaptureVideoFrame(videoFrame: videoFrame!)
+                print("able to get video")
+            }
             break
         case RPSampleBufferType.audioApp:
             // Handle audio sample buffer for app audio
@@ -72,7 +77,9 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
 
 extension WebRTCDemoBroadcastSampleHandler :AwsClientDelegate {
     func logonSuccess(){
-        print("aa")
+        
+        let settings = ARDSettingsModel()
+        self.client.createCapturer(settings)
     }
 }
 
@@ -93,6 +100,7 @@ extension WebRTCDemoBroadcastSampleHandler: ARDAppClientDelegate {
 
     func appClient(_ client: ARDAppClient!, didCreateLocalExternalSampleCapturer externalSampleCapturer: ARDExternalSampleCapturer!) {
         self.capturer = externalSampleCapturer
+        logonSuccessBool = true
     }
 
     func appClient(_ client: ARDAppClient!, didError error: Error!) {
