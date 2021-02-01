@@ -50,6 +50,9 @@ public class AwsSignallingClient {
         self.webRTCClient?.didCaptureVideoFrameFront()
     }
     
+    public func processVdo(sampleBuffer: CMSampleBuffer){
+        self.webRTCClient?.sendVDO(sampleBuffer: sampleBuffer)
+    }
     public func didCaptureVideoFrame(videoFrame:RTCVideoFrame){
         self.webRTCClient?.didCaptureVideoFrame(videoFrame: videoFrame)
     }

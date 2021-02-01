@@ -5,36 +5,36 @@
 import ReplayKit
 import WebRTC
 import WebRTCDemoSignalling
-import os.log
 import AwsSignalling
 
 
 
 class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
-    let client: ARDAppClient = ARDAppClient()
-    let logging = RTCCallbackLogger()
-    let sharedSettings = UserDefaults(suiteName: .sharedGroupName)
-    var capturer: ARDExternalSampleDelegate?
 
-    
     var logonSuccessBool:Bool = false
     let awsClient:AwsSignallingClient  = AwsSignallingClient.init(username: "anson1788", pw: "Yu24163914!")
-    
+    var lastSendTs:Int64 = 0
+    var bufferCopy:CMSampleBuffer?
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
-        // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional.
-        self.logging.start { (logMessage: String, _) in
-            OSLog.info(logMessage: logMessage, log: OSLog.webRTC)
-        }
        
-        client.isBroadcast = true
-        client.delegate = self
-        //client.connectToRoom(withId: roomID, settings: settings, isLoopback: false)
-
-        //let logMessage = "Try to connect to room \(roomID)"
-        //OSLog.info(logMessage: logMessage, log: OSLog.broadcastExtension)
-        
         self.awsClient.setDelegate(delegate: self)
         self.awsClient.mobileLogin()
+        
+        DispatchQueue.main.async {
+              Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {[weak self] (timer:Timer) in
+                  guard let weakSelf = self else {return}
+                 let elapse = Int64(Date().timeIntervalSince1970 * 1000) - self!.lastSendTs
+                  // If the inter-frame interval of the video is too long, resend the previous frame.
+                  if(elapse > 300) {
+                 
+                      if let buffer = weakSelf.bufferCopy {
+                          weakSelf.processSampleBuffer(buffer, with: .video)
+                      }
+                    
+                  }
+              }
+          }
+    
     }
     
     override func broadcastPaused() {
@@ -46,20 +46,17 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
     }
     
     override func broadcastFinished() {
-        // User has requested to finish the broadcast.
-        self.logging.stop()
-        self.client.disconnect()
+      
     }
     
     override func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBufferType: RPSampleBufferType) {
         switch sampleBufferType {
         case RPSampleBufferType.video:
-            // Handle video sample buffer
-            //capturer?.didCapture(sampleBuffer)
+
             if logonSuccessBool {
-                let videoFrame:RTCVideoFrame?  = self.capturer?.didCapture(toVideoFrame: sampleBuffer)
-                self.awsClient.didCaptureVideoFrame(videoFrame: videoFrame!)
-                print("able to get video")
+                self.bufferCopy = sampleBuffer
+                self.lastSendTs = Int64(Date().timeIntervalSince1970 * 1000)
+                self.awsClient.processVdo(sampleBuffer: sampleBuffer)
             }
             break
         case RPSampleBufferType.audioApp:
@@ -77,37 +74,8 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
 
 extension WebRTCDemoBroadcastSampleHandler :AwsClientDelegate {
     func logonSuccess(){
-        
-        let settings = ARDSettingsModel()
-        self.client.createCapturer(settings)
-    }
-}
-
-extension WebRTCDemoBroadcastSampleHandler: ARDAppClientDelegate {
-
-    
-    func appClient(_ client: ARDAppClient!, didChange state: ARDAppClientState) {
-    }
-
-    func appClient(_ client: ARDAppClient!, didChange state: RTCIceConnectionState) {
-    }
-
-    func appClient(_ client: ARDAppClient!, didReceiveLocalVideoTrack localVideoTrack: RTCVideoTrack!) {
-    }
-
-    func appClient(_ client: ARDAppClient!, didReceiveRemoteVideoTrack remoteVideoTrack: RTCVideoTrack!) {
-    }
-
-    func appClient(_ client: ARDAppClient!, didCreateLocalExternalSampleCapturer externalSampleCapturer: ARDExternalSampleCapturer!) {
-        self.capturer = externalSampleCapturer
         logonSuccessBool = true
     }
-
-    func appClient(_ client: ARDAppClient!, didError error: Error!) {
-    }
-
-    func appClient(_ client: ARDAppClient!, didGetStats stats: [Any]!) {
-    }
-
 }
+
 

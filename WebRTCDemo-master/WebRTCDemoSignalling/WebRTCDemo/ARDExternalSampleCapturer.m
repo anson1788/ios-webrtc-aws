@@ -13,7 +13,7 @@
 #import "ARDUtilities.h"
 #import <WebRTC/WebRTC.h>
 
-const CGFloat kMaximumSupportedResolution = 160;
+const CGFloat kMaximumSupportedResolution = 320;
 
 @implementation ARDExternalSampleCapturer
 
@@ -40,6 +40,8 @@ const CGFloat kMaximumSupportedResolution = 160;
     // Downscale the buffer due to the big memory footprint (> 50MB) for bigger then 720p resolutions
     if (originalWidth > kMaximumSupportedResolution || originalHeight > kMaximumSupportedResolution) {
       rtcPixelBuffer = [[RTCCVPixelBuffer alloc] initWithPixelBuffer: pixelBuffer];
+  
+      /*
       int width = originalWidth * kMaximumSupportedResolution / originalHeight;
       int height = kMaximumSupportedResolution;
       if (originalWidth > originalHeight) {
@@ -69,6 +71,8 @@ const CGFloat kMaximumSupportedResolution = 160;
       }
       CVPixelBufferRelease(outputPixelBuffer);
       free(tmpBuffer);
+     */
+        
     }
     int64_t timeStampSec = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer));
     RTCVideoFrame *videoFrame = [[RTCVideoFrame alloc] initWithBuffer:rtcPixelBuffer

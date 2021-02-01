@@ -29,6 +29,8 @@ final class WebRTCClient: NSObject {
     private var remoteVideoTrack: RTCVideoTrack?
     private var remoteDataChannel: RTCDataChannel?
     private var constructedIceServers: [RTCIceServer]?
+    
+    public var vdoSource:RTCVideoSource?
 
     required init(iceServers: [RTCIceServer], isAudioOn: Bool) {
         let config = RTCConfiguration()
@@ -143,7 +145,6 @@ final class WebRTCClient: NSObject {
     }
     
     func didCaptureVideoFrame(videoFrame:RTCVideoFrame){
-        print("data \(self.videoCapturer?.delegate)")
         self.videoCapturer?.delegate!.capturer(self.videoCapturer!, didCapture: videoFrame)
     }
     func startCaptureLocalVideo(renderer: RTCVideoRenderer) {
@@ -193,10 +194,32 @@ final class WebRTCClient: NSObject {
 
     private func createVideoTrack() -> RTCVideoTrack {
         let videoSource = WebRTCClient.factory.videoSource()
-        videoSource.adaptOutputFormat(toWidth: 1280, height: 720, fps: 30)
-        //videoCapturer = RTCCameraVideoCapturer(delegate: videoSource)
+        self.vdoSource = videoSource
+        videoSource.adaptOutputFormat(toWidth: 640, height: 360, fps: 60)
         videoCapturer = RTCVideoCapturer(delegate: videoSource)
         return WebRTCClient.factory.videoTrack(with: videoSource, trackId: "KvsVideoTrack")
+    }
+    
+    public func sendVDO(sampleBuffer: CMSampleBuffer){
+        if (CMSampleBufferGetNumSamples(sampleBuffer) != 1 || !CMSampleBufferIsValid(sampleBuffer) ||
+            !CMSampleBufferDataIsReady(sampleBuffer)) {
+            return;
+        }
+        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+        if (pixelBuffer == nil) {
+            return;
+        }
+        
+        let width = CVPixelBufferGetWidth(pixelBuffer!);
+        let height = CVPixelBufferGetHeight(pixelBuffer!);
+        
+        self.vdoSource?.adaptOutputFormat(toWidth: Int32(414), height: Int32(896), fps: 8)
+        let rtcPixelBuffer = RTCCVPixelBuffer(pixelBuffer: pixelBuffer!)
+        let timeStampNs =
+            CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) * Float64(NSEC_PER_SEC)
+        let videoFrame =  RTCVideoFrame(buffer: rtcPixelBuffer, rotation: RTCVideoRotation._0, timeStampNs: Int64(timeStampNs))
+        self.vdoSource?.capturer(self.videoCapturer!, didCapture: videoFrame)
+
     }
 
     private func createAudioTrack() -> RTCAudioTrack {

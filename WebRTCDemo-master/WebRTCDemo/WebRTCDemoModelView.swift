@@ -26,7 +26,7 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
         self.logging.start { (logMessage: String, _) in
             OSLog.info(logMessage: logMessage, log: OSLog.webRTC)
         }
-        awsClient.mobileLogin()
+       // awsClient.mobileLogin()
         
     }
     
@@ -42,14 +42,7 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
         let roomID = roomID ?? String.broadcastRandomRoomID
         self.lastRoomID = roomID
         client.createCapturer(settings)
-        /*
-        client.connectToRoom(withId: roomID, settings: settings, isLoopback: false)
-
-        let logMessage = "Try to connect to room \(roomID)"
-        self.status = logMessage
-        OSLog.info(logMessage: logMessage, log: OSLog.app)
-         */
-   
+       
     }
     
     class Timestamp {
@@ -75,9 +68,9 @@ class WebRTCBroadcastModelView: NSObject, ObservableObject {
             if (bufferType == .video) {
                 let videoFrame:RTCVideoFrame?  = self.capturer?.didCapture(toVideoFrame: sample)
                 self.awsClient.didCaptureVideoFrame(videoFrame: videoFrame!)
-              //  self.capturer?.didCapture(sample)
                 let timestamp = Timestamp()
                 timestamp.printTimestamp()
+           
                 print("able to get video")
             }
             
