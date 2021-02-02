@@ -32,10 +32,12 @@ public class AwsSignallingClient {
     
     var signalingConnected: Bool = false
     var remoteSenderClientId: String?
+    var isMaster: Bool = true
     
     public init(username: String,pw :String) {
            self.username   = username
            self.pw = pw
+           self.isMaster = true
     }
     
 
@@ -115,7 +117,11 @@ public class AwsSignallingClient {
     }
     
     public func connectAsViewer(){
-        connectAsRole(role: viewerRole, connectAsUser: (connectAsViewerKey))
+        if self.isMaster{
+            connectAsRole(role: masterRole, connectAsUser: (connectAsMasterKey))
+        }else{
+            connectAsRole(role: viewerRole, connectAsUser: (connectAsViewerKey))
+        }
     }
     
     func connectAsRole(role: String, connectAsUser: String) {
@@ -149,8 +155,10 @@ public class AwsSignallingClient {
 
         let seconds = 2.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            self.webRTCClient?.offer { sdp in
-                self.signalingClient?.sendOffer(rtcSdp: sdp, senderClientid: self.localSenderId)
+            if !self.isMaster {
+                self.webRTCClient?.offer { sdp in
+                    self.signalingClient?.sendOffer(rtcSdp: sdp, senderClientid: self.localSenderId)
+                }
             }
             if self.signalingConnected {
                 print("connect")
@@ -221,7 +229,9 @@ public class AwsSignallingClient {
             var httpURlString = (wssResourceEndpointItem?.resourceEndpoint!)!
                 + "?X-Amz-ChannelARN=" + self.channelARN!
             self.localSenderId = NSUUID().uuidString.lowercased()
-            httpURlString += "&X-Amz-ClientId=" + self.localSenderId
+            if !self.isMaster {
+                httpURlString += "&X-Amz-ClientId=" + self.localSenderId
+            }
             let httpRequestURL = URL(string: httpURlString)
             let wssRequestURL = URL(string: (wssResourceEndpointItem?.resourceEndpoint!)!)
             usleep(5)
@@ -262,6 +272,9 @@ public class AwsSignallingClient {
         
     }
     func getSingleMasterChannelEndpointRole() -> AWSKinesisVideoChannelRole {
+        if self.isMaster {
+            return .master
+        }
         return .viewer
     }
     
@@ -316,7 +329,7 @@ extension AwsSignallingClient: WebRTCClientDelegate {
     func webRTCClient(_: WebRTCClient, didGenerate candidate: RTCIceCandidate) {
         print("Generated local candidate")
         setRemoteSenderClientId()
-        signalingClient?.sendIceCandidate(rtcIceCandidate: candidate, master: false,
+        signalingClient?.sendIceCandidate(rtcIceCandidate: candidate, master: self.isMaster,
                                           recipientClientId: remoteSenderClientId!,
                                           senderClientId: self.localSenderId)
          
