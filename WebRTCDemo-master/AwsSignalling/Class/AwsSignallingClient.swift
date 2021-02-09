@@ -116,6 +116,11 @@ public class AwsSignallingClient {
         
     }
     
+    public func closefunc(){
+        self.webRTCClient?.shutdown()
+        self.signalingClient?.connect()
+    }
+    
     public func connectAsViewer(){
         if self.isMaster{
             connectAsRole(role: masterRole, connectAsUser: (connectAsMasterKey))

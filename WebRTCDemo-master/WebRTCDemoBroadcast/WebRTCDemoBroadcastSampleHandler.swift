@@ -39,14 +39,20 @@ class WebRTCDemoBroadcastSampleHandler: RPBroadcastSampleHandler {
     
     override func broadcastPaused() {
         // User has requested to pause the broadcast. Samples will stop being delivered.
+        self.awsClient.closefunc()
+        logonSuccessBool = false
     }
     
     override func broadcastResumed() {
         // User has requested to resume the broadcast. Samples delivery will resume.
+        self.awsClient.closefunc()
+        logonSuccessBool = false
     }
     
     override func broadcastFinished() {
-      
+        self.awsClient.closefunc()
+        logonSuccessBool = false
+
     }
     
     override func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBufferType: RPSampleBufferType) {
